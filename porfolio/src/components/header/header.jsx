@@ -5,9 +5,11 @@ import gif from '../../img/I_want_to_make_a_background_video_for_a_web_portfolio
 function Header() {
    
   const [isVisible, setIsVisible] = useState(false);  
-  let tam = window.screen.height * 0.6
-    
-    
+  let tam = 0
+  //calcula el tamaño de la pantalla para saver en que momento tiene que aparecer el color de la navbar
+  window.screen.width > 400 ? tam = window.screen.height * 0.6: tam = window.screen.height * 0.39; 
+  
+      
 
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
