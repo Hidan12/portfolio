@@ -1,0 +1,21 @@
+.tarjeta {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
+    /* align-content: stretch; */
+    flex-wrap: nowrap;
+}
+ .informacion{
+    padding-left: 13px;
+ }
+.gif{
+    z-index: 0;
+    transform: perspective(800px) rotateY(-25deg) scale(.8) rotateX(10deg);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.gif img{
+    width: 50%;
+}
