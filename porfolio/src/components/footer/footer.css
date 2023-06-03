@@ -1,0 +1,41 @@
+.Contacto{
+    margin-top: 15%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5%;
+}
+
+.Contacto h3{
+    color: aliceblue;
+}
+
+.contactoConten{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly
+}
+
+.contactoConten a{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.contactoConten img{
+    margin-left: 3%;
+    width: 15%;
+}
+
+.contactoConten img:hover{
+    transform: translateY(3px);
+}
+.red {
+    text-align: center;
+}
+@media (min-width: 500px) {
+    .contactoConten{
+        flex-direction: row;
+    }
+}

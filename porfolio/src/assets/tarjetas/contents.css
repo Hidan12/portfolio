@@ -3,7 +3,6 @@
     justify-content: flex-end;
     flex-direction: row;
     align-items: center;
-    /* align-content: stretch; */
     flex-wrap: nowrap;
 }
 
@@ -26,6 +25,12 @@ a{
 @keyframes rotar{
     100%{
         transform: perspective(800px) rotateY(-2deg) scale(1.0) rotateX(0deg)
+    }
+}
+
+@keyframes volver{
+    100%{
+        transform: perspective(800px) rotateY(-25deg) scale(.8) rotateX(10deg);
     }
 }
 

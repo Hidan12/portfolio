@@ -2,7 +2,7 @@ import Conten from "./conten"
 function Tarjeta({ tarjetas }){
     return(
         <>
-        {tarjetas.map( info => <Conten info={info}/> )}
+        {tarjetas.map( (info, index) => <Conten info={info} key={index}/> )}
         </>
     )
 }

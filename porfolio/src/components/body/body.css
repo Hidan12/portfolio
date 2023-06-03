@@ -1,3 +1,77 @@
-.body {
-    background-color: #2b2b33;
+
+body .tarj{
+    opacity: 0;
 }
+
+body .mover {
+    animation: moveWord 1.7s forwards;
+  }
+  
+.body .titulo{
+  margin-top: 10%;
+  margin-bottom: 5%;
+}
+
+.acercaDeMiconten{
+    margin-left: 10%;
+    width: 80%;
+    opacity: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+
+
+  @keyframes moveWord {
+    from {
+        opacity: 1;
+      transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+
+
+@media (max-width:500px) {
+  .acercaDeMiconten{
+    width: 100%;
+    margin-left: 0;
+  }
+    
+  
+}
+
+
+
+/* h2 .mark{
+
+    position: relative;
+    color: inherit;
+    background: none 0px 80% / 100% 0.3em no-repeat;
+    padding: 0
+}
+
+.dentroTexto{
+    font-size: 2.275em;
+    font-weight: 500;
+    margin: 2rem 0rem 1.5rem;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 9.9px;
+}
+
+.dentroTexto::after{
+    left: 2px;
+    text-shadow: rgb(0, 255, 255) -1px 0px;
+    animation: 15s linear 0s infinite alternate-reverse none running noise-anim-2
+}
+.dentroTexto::before{
+    left: -2px;
+    text-shadow: rgb(255, 105, 180) 3px 0px;
+    animation: 2s linear 0s infinite alternate-reverse none running
+} */

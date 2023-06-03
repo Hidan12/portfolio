@@ -7,7 +7,7 @@ function Header() {
   const [isVisible, setIsVisible] = useState(false);  
   let tam = 0
   //calcula el tamaño de la pantalla para saver en que momento tiene que aparecer el color de la navbar
-  window.screen.width > 400 ? tam = window.screen.height * 0.6: tam = window.screen.height * 0.39; 
+  window.screen.width > 400 ? tam = window.screen.height * 0.6: tam = window.screen.height * 0.35; 
   
       
 
@@ -25,17 +25,14 @@ function Header() {
   useEffect(() => {
     
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  },);
   
 
   return (
-    <>
+    <header id="header">
       <NavBar clase={isVisible}/>
       <img className='imgFondo' src={gif} alt='imagen'/>     
-      </>
+      </header>
   );
 }
   
