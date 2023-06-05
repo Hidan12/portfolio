@@ -105,7 +105,7 @@ function Body() {
        <div className="body" id='body'>
             <section id='acercaDeMi'>
               <article className='titulo'>
-                {aboutVisible && <Typing texto={"acerca de mi"}/>}
+                {aboutVisible && <Typing texto={"Acerca de mi"}/>}
               </article>
               <article className={`acercaDeMiconten ${aboutVisible && "mover"}`}>
                 <article className='acercaDeMiNombre'>

@@ -23,12 +23,9 @@
     justify-content: center;
 }
 
-.contactoConten img{
-    margin-left: 3%;
-    width: 15%;
-}
 
-.contactoConten img:hover{
+
+.contactoConten a:hover{
     transform: translateY(3px);
 }
 .red {
