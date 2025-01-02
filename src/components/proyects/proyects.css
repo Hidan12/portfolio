@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .transform-custom {
+    transform: perspective(800px) rotateY(-25deg) scale(.8) rotateX(10deg);
+  }
+}
