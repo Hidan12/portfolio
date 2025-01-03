@@ -17,7 +17,7 @@ export default {
         }
       },
       animation:{
-        moveleft: 'moveleft 1s forwards linear',
+        moveleft: 'moveleft 0.5s forwards linear',
         center: 'center 1s forwards'
       }
     },

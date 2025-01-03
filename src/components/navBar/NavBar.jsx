@@ -1,14 +1,39 @@
 import { useDispatch, useSelector } from "react-redux"
 import "./navBar.css"
 import { setTheme } from "../../store/action/themeAction"
+import { useEffect, useState } from "react"
 
+const MenuBurguer = ({closedMenu, navScroll})=>{
+    return(
+        <div className="fixed top-0 left-0 flex flex-col w-[40vw] sm:w-[30vw] h-full bg-blue-800 animate-moveleft">
+            <div className="w-full flex justify-end">
+                <button onClick={()=>closedMenu()} className="font-bold text-2xl text-white">X</button>
+            </div>
+            <div className="w-full h-[60%] flex flex-col justify-around">
+                <div className="flex justify-center items-center">
+                    <button onClick={()=> {navScroll("home"), closedMenu()}} className="text-white">Home</button>
+                </div>
+                <div className="flex justify-center items-center">
+                    <button onClick={()=>{navScroll("proyects"), closedMenu()}} className="text-white">Projects</button>
+                </div>
+                <div className="flex justify-center items-center">
+                    <button onClick={()=>{navScroll("contact"), closedMenu()}}  className="text-white">Contact</button>
+                </div>
+                <div className="flex justify-center items-center">
+                    <button onClick={()=>{navScroll("about"), closedMenu()}} className="text-white">About Me</button>
+                </div>
+            </div>
+        </div>
+    )
+}
 
 const SelectThema = ()=>{
     const {dark} = useSelector(state => state.reducerTheme)
     const dispatch = useDispatch()
+    
     return(
-        <button onClick={()=>dispatch(setTheme())} className="group flex items-center  justify-center  md:w-[8vw] lg:w-[6vw] text-white rounded-md">
-            <div className="overflow-hidden md:w-[3vw] md:h-[3vw] lg:w-[3vw] lg:h-[3vw] rounded-full transition-transform duration-300 relative">
+        <button onClick={()=>dispatch(setTheme())} className="group flex items-center  justify-center w-10  md:w-[8vw] lg:w-[6vw] text-white rounded-md z-50">
+            <div className="overflow-hidden w-[7vw] h-[7vw] sm:w-[5vw] sm:h-[5vw] md:w-[3vw] md:h-[3vw] lg:w-[3vw] lg:h-[3vw] rounded-full transition-transform duration-300 relative">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -31,9 +56,49 @@ const SelectThema = ()=>{
     )
 }
 
-
+const NavBarMobile = ({navScroll})=>{
+    const [openMenu, setOpenMenu] = useState(false)
+    const menuState = ()=>{
+        setOpenMenu(o => o = !o)
+    }
+    return(
+        <header className="w-full h-[10vh] grid grid-cols-3 justify-items-center items-center bg-blue-800 sticky top-0 z-30">
+            {openMenu ? <MenuBurguer closedMenu={menuState} navScroll={navScroll}/>:null}
+            <div className="w-full">
+                <button onClick={()=> menuState()} className="w-8 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
+                        <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                    </svg>
+                </button>
+            </div>
+            <div className="flex items-center">
+                <h2 className="font-bold text-white">Martin Vidan</h2>
+            </div>
+            <div className="w-full flex justify-end items-center">
+                <SelectThema/>
+            </div>
+        </header>
+    )
+}
 
 export const NavBar = ({navScroll})=>{
+    const [windowSize, setWindowSize] = useState({width: window.innerWidth})
+    useEffect(() => {
+        const handleResize = () => {
+          setWindowSize({
+            width: window.innerWidth,
+            height: window.innerHeight,
+          });
+        };
+        window.addEventListener('resize', handleResize);
+        handleResize();
+    }, [])
+
+    if (windowSize.width < 762) {
+        return(
+            <NavBarMobile navScroll={navScroll}/>
+        )
+    }
     return(
         <header className="w-full h-[10vh] grid grid-cols-3 justify-items-center items-center bg-blue-800 sticky top-0 z-30">
             <div className="w-full">
