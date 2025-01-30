@@ -1,38 +1,49 @@
-import axios from "axios";
 import Swal from "sweetalert2";
-import { useEffect, useState } from "react";
-
-const messageAlert = () => {
-  Swal.fire({
-    title: "Email Sent",
-    icon: "success",
-    text: "Thank you very much for contacting me! Please check your email (including spam or junk folder) for a confirmation message. I will get back to you as soon as possible. Have a great day!",
-    confirmButtonText: "Back",
-  });
-};
+import { useEffect, useReducer, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { clearSendMail, setSendMail } from "../../store/action/mailAction";
 
 const FormContact = () => {
+  const { succes, error, loading } = useSelector(
+    (store) => store.sendMailReducer
+  );
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const dispatch = useDispatch();
 
-  const sendMail = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(
-        "https://mytinerary-back-martinvidan.onrender.com/api/portfolio/sendMail",
-        {
-          email: email,
-          subject: subject,
-          message: message,
-        }
-      );
-      if (response.data) {
-        messageAlert();
-      }
-    } catch (error) {
-      console.error("Error al enviar el correo:", error);
+
+  useEffect(() => {
+    if (loading) {
+      Swal.fire({
+        title: "Processing...",
+        imageUrl: "https://cdn-icons-gif.flaticon.com/14674/14674129.gif",
+        imageWidth: 150,
+        text: "Sending mail...",
+        showConfirmButton: false,
+      });
+    } else if (succes) {
+      Swal.fire({
+        title: "Email Sent",
+        imageUrl: "https://i.pinimg.com/originals/50/ea/e6/50eae65aa1b3d9ea135ece2a38191b0f.gif",
+        text: "Thank you for contacting me! Check your email (including spam) for confirmation.",
+        confirmButtonText: "Back",
+      });
+      dispatch(clearSendMail());
+    } else if (error) {
+      Swal.fire({
+        title: "Error",
+        imageUrl: "https://cdn-icons-png.flaticon.com/512/3712/3712858.png",
+        text: "Error sending mail",
+        footer: '<a href="https://wa.me/+573164317236" target="_blank">Contact via WhatsApp</a>',
+        confirmButtonText: "Back",
+      }).then(() => dispatch(clearSendMail()));
     }
+  }, [loading, succes, error, dispatch]);
+
+  const sendMail = (e) => {
+    e.preventDefault();
+    dispatch(setSendMail({ email: email, subject: subject, message: message }));  
   };
 
   return (
@@ -59,7 +70,7 @@ const FormContact = () => {
       ></textarea>
       <button
         type="submit"
-        className="text-white p-3 rounded-md bg-blue-600 hover:bg-blue-900"
+        className="text-white p-3 rounded-md bg-[#492153] hover:bg-[#2A114B]"
       >
         Send
       </button>

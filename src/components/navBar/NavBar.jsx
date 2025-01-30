@@ -100,7 +100,7 @@ export const NavBar = ({navScroll})=>{
         )
     }
     return(
-        <header className="w-full h-[10vh] grid grid-cols-3 justify-items-center items-center bg-blue-800 sticky top-0 z-30">
+        <header className="w-full h-[10vh] grid grid-cols-3 justify-items-center items-center bg-[#492153] sticky top-0 z-30">
             <div className="w-full">
                 <h3 className="ms-3 font-semibold text-white">Martin Vidan</h3>
             </div>

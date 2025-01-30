@@ -24,7 +24,7 @@ function App() {
      <main className={`w-full flex flex-col items-center ${dark ? "bg-black" : "bg-white"}`}>
       <div className='w-[80vw]'>
         <div >
-          <AboutMe /> 
+          <AboutMe navScroll={scroll}/> 
         </div>
         <Proyects/>
       </div>
