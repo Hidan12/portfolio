@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 
 const MenuBurguer = ({closedMenu, navScroll})=>{
     return(
-        <div className="fixed top-0 left-0 flex flex-col w-[40vw] sm:w-[30vw] h-full bg-blue-800 animate-moveleft">
+        <div className="fixed top-0 left-0 flex flex-col w-[40vw] sm:w-[30vw] h-full bg-[#492153] animate-moveleft">
             <div className="w-full flex justify-end">
                 <button onClick={()=>closedMenu()} className="font-bold text-2xl text-white">X</button>
             </div>
