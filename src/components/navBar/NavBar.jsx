@@ -62,7 +62,7 @@ const NavBarMobile = ({navScroll})=>{
         setOpenMenu(o => o = !o)
     }
     return(
-        <header className="w-full h-[10vh] grid grid-cols-3 justify-items-center items-center bg-blue-800 sticky top-0 z-30">
+        <header className="w-full h-[10vh] grid grid-cols-3 justify-items-center items-center bg-[#492153] sticky top-0 z-30">
             {openMenu ? <MenuBurguer closedMenu={menuState} navScroll={navScroll}/>:null}
             <div className="w-full">
                 <button onClick={()=> menuState()} className="w-8 flex items-center">
